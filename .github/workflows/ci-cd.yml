@@ -29,7 +29,7 @@ jobs:
                 pytest test_app.py -v
     build:
         name: Build Docker Image
-        runs-on: ubuntu-latest
+        runs-on: ubuntu
         needs: test
 
         steps:
@@ -40,7 +40,7 @@ jobs:
               run: docker build -t ci-cd-demo:latest .
     deploy:
         name: Deploy to localhost
-        runs-on: ubuntu-latest
+        runs-on: ubuntu
         needs: build
         if: github.ref == 'refs/heads/main'
 
